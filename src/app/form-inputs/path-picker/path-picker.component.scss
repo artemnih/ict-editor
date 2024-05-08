@@ -1,0 +1,35 @@
+@use '../../../sass/colors' as colors;
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    input {
+        border-right: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: colors.$black0;
+
+        &[disabled] {
+            background-color: colors.$black1;
+            color: colors.$gray4;
+        }
+    }
+
+    .button-picker {
+        background-color: colors.$gray0;
+        border: 1px solid colors.$gray3;
+        color: colors.$gray4;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        &:hover {
+            background-color: colors.$gray1;
+            cursor: pointer;
+        }
+
+        &[disabled] {
+            color: colors.$gray4;
+            cursor: not-allowed;
+        }
+    }
+}

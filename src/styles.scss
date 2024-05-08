@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@use './sass/colors' as colors;
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+input,
+select {
+    color: colors.$gray3;
+    background-color: colors.$black0;
+    width: 100%;
+    border: 1px solid colors.$gray3;
+    border-radius: 5px;
+    padding: 0.5rem 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:disabled {
+        background-color: colors.$black1;
+        color: colors.$gray4;
+        border: 1px solid colors.$gray3;
+        opacity: 1;
+    }
+
+    &[type='checkbox'] {
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+}
+
+.mb-3 {
+    margin-bottom: 5px;
+}

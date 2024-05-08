@@ -1,0 +1,205 @@
+@use '../../sass/colors' as colors;
+
+$outlet-size: 20px;
+$outlet-half-size: 10px; // $outlet-size / 2
+$border-radius: 10px;
+$outlet-y: 23px; // (50 - border) / 2
+$font-size: 0.85rem;
+
+.hidden {
+    display: none;
+}
+
+.node {
+    border: 2px solid colors.$gray0;
+    cursor: grab;
+    // position: absolute;
+    background-color: colors.$gray0;
+    z-index: 50;
+    border-radius: $border-radius;
+    color: colors.$gray4;
+    font-size: $font-size;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+    &.shadowed {
+        opacity: 0.3;
+    }
+
+    &:active {
+        cursor: grabbing;
+    }
+
+    .node-status {
+        position: absolute;
+        height: calc(100% + 22px);
+        width: calc(100% + 22px);
+        top: -11px;
+        left: -11px;
+
+        border: 6px solid;
+        border-radius: $border-radius + 8px;
+        border-color: colors.$gray0;
+        z-index: -1;
+        opacity: 0.5;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+
+        &.node-status-empty {
+            border-color: colors.$gray0;
+        }
+
+        &.node-status-succeeded {
+            border-color: colors.$green2;
+        }
+
+        &.node-status-pending {
+            border-color: colors.$orange;
+            animation-name: ns-opacity;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-timing-function: ease-in-out;
+        }
+
+        &.node-status-running {
+            border-color: colors.$orange;
+            animation-name: ns-opacity;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-timing-function: ease-in-out;
+        }
+
+        &.node-status-failed {
+            border-color: colors.$red;
+        }
+
+        &.node-status-error {
+            border-color: colors.$red;
+        }
+    }
+
+    @keyframes ns-opacity {
+        0% {
+            opacity: 0.5;
+        }
+        50% {
+            opacity: 0.1;
+        }
+        100% {
+            opacity: 0.5;
+        }
+    }
+
+    .node-header {
+        width: 100%;
+        height: 46px; // 50 - 2 * 2px border
+        display: flex;
+        align-items: center;
+
+        button {
+            background-color: transparent;
+            border: none;
+            color: colors.$gray4;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .title {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .warning {
+            color: colors.$orange;
+            padding-right: 10px;
+            font-size: 20px;
+        }
+    }
+
+    &.selected {
+        border: 2px solid colors.$orange;
+    }
+
+    .node-inside {
+        border-radius: 8px;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        position: relative;
+
+        .mb-3 {
+            margin-bottom: 5px;
+        }
+
+        .node-content {
+            border-top: 2px solid colors.$gray1;
+            // width: 100%;
+            padding: 0 10px;
+            margin-bottom: 10px;
+
+            // override ngx-formly styles
+            label.form-label {
+                display: block;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .inputs-outputs {
+                width: 100%;
+                display: flex;
+
+                .inputs,
+                .outputs {
+                    flex: 1;
+                    overflow: hidden;
+                }
+
+                .output {
+                    justify-content: right;
+                }
+
+                .input,
+                .output {
+                    display: flex;
+                    padding-top: 10px;
+                    line-height: 15px;
+
+                    .node-inlet,
+                    .node-outlet {
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 8px;
+                        background-color: colors.$green2;
+                        flex: none;
+                        cursor: crosshair;
+                    }
+
+                    span {
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                }
+
+                .input span {
+                    padding-left: 5px;
+                }
+
+                .input .required {
+                    color: colors.$orange;
+                    padding-left: 3px;
+                }
+
+                .output span {
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+}

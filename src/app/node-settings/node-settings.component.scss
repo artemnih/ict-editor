@@ -1,0 +1,68 @@
+@use '../../sass/colors' as colors;
+
+.formly-tag {
+    display: block;
+    margin-top: 10px;
+
+    .is-invalid {
+        border-color: colors.$orange;
+        box-shadow: 0 0 2px 1px colors.$orange;
+    }
+
+    label.form-label {
+        span {
+            color: colors.$orange;
+        }
+    }
+
+    .form-check-input:checked {
+        accent-color: colors.$green2;
+    }
+
+    .form-check {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    input[type='checkbox'] {
+        position: relative;
+        cursor: pointer;
+        margin-right: 2px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    input[type='checkbox']:checked::before {
+        background-color: colors.$green2;
+        border: 1px solid colors.$green2;
+    }
+
+    input[type='checkbox']:before {
+        content: '';
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        margin-right: 10px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: colors.$gray0;
+        border-radius: 2px;
+        border: 1px solid colors.$gray4;
+    }
+
+    input[type='checkbox']:checked:after {
+        content: '';
+        display: block;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top: 0;
+        left: 4px;
+    }
+}
