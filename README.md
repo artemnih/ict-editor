@@ -1,3 +1,3 @@
 # ICT Editor: Live Preview
 
-See [Demo](https://artemnih.github.io/ict-editor/)
+See [Demo](https://artemtek.github.io/ict-editor/)
